@@ -1,3 +1,78 @@
-p {
-  color: red;
+html, body, div, span, h1, h2, p, a, strong, ol, ul, li, fieldset, form, label,
+legend, input, table, tbody, tfoot, thead, tr, th, td, embed, footer, header,
+section
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 1em;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+  text-align: center;
+}
+
+header {
+	padding-top: 90px;
+}
+h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 0.8em;
+}
+
+section {
+	margin-top: 50px;
+}
+
+input {
+	border: none;
+	height: 35px;
+	font-size: 1.5em;
+	background-color: #EEE;
+}
+
+input[type=text] {
+	/*width: 50%;*/
+	padding-left: 10px;
+	width: 60%;
+}
+
+input[type=submit] {
+	/*width: 5%;*/
+	padding: 0 10px;
+}
+
+.error {
+	font-size: 0.75em;
+}
+
+ul {
+	margin-top: 50px;
+	list-style-type: none;
+	/*text-align: left;*/
+}
+
+li {
+	overflow: auto;
+	max-width: 100%;
+	white-space: nowrap;
+	margin: 8px;
+}
+
+li:last-child {
+	font-weight: bold;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 10px;
 }
