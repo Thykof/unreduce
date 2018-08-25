@@ -9,22 +9,23 @@ def route():
 
 @app.post('/')
 def url():
-    error = None
-    urls = list()
     url = request.forms.get('url')
+    if url == '':
+        return template('route')
     try:
         r = requests.get(url)
     except:
         error = "Invalid URL."
-        return template('result', urls=urls, error=error)
+        return template('route', error=error)
     if r.status_code == 200:
+        urls = list()
         for elt in r.history:
             urls.append(elt.url)
         urls.append(r.url)
-        return template('result', urls=urls, error=error)
+        return template('route', urls=urls)
     else:
         error = "The request failed."
-        return template('result', urls=urls, error=error)
+        return template('route', error=error)
 
 @app.route('/style.css')
 def style():
