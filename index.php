@@ -8,11 +8,11 @@
     $url = $_POST['url'];
 
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
-    curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+    curl_setopt($ch, CURLOPT_HEADER, true); // we want headers
+    curl_setopt($ch, CURLOPT_NOBODY, true); // we don't need body
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // we don't need the initial url to be the $effective_url
     $response = curl_exec($ch);
 
     if(! empty($response)) {
@@ -21,10 +21,12 @@
       $redirect_url = curl_getinfo($ch, CURLINFO_REDIRECT_URL);
       curl_close($ch);
       if($n_httpcode >= 200 && $n_httpcode <400) {
-        $urls = array($effective_url, $redirect_url);
+        $urls = array($url, $effective_url, $redirect_url);
         echo "<ul>";
         foreach ($urls as $u) {
-          echo "<li>$u</li>";
+          if ($u != "") {
+            echo "<li>$u</li>";
+          }
         }
         echo "</ul>";
       }
