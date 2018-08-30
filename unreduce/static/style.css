@@ -53,6 +53,11 @@ input[type=submit] {
 	font-size: 0.75em;
 }
 
+.flash {
+	font-size: 0.75em;
+	font-style: italic;
+}
+
 ul {
 	margin-top: 50px;
 	list-style-type: none;

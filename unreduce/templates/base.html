@@ -12,8 +12,15 @@
 
 <section class="content">
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+    <div class="flash error">{{ message }}</div>
   {% endfor %}
+
+  <form method="post">
+    <input name="url" type="text" autofocus placeholder="Reduced URL"/>
+    <!-- <input name="url" id="url" autofocus placeholder="Reduced URL"/> -->
+    <input value="Run" type="submit" />
+  </form>
+
   {% block content %}{% endblock %}
 </section>
 
