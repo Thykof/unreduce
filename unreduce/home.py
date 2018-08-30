@@ -25,11 +25,6 @@ def home():
                 error = 'URL is empty.'
 
         if error is None:
-            print(url)
-            #app.logger.debug('url: {}'.format(url))
-            db.execute('INSERT INTO req (url) VALUES (?)', (url,))
-            db.commit()
-
             try:
                 r = requests.get(url)
             except:
@@ -41,8 +36,20 @@ def home():
                     urls.append(r.url)
                 else:
                     error = "The request failed."
+            finally:
+                result = None if len(urls) == 0 else urls[-1]
+                db.execute('INSERT INTO req (url, result) VALUES (?, ?)', (url, result))
+                db.commit()
         if error is not None:
             flash(error)
         return render_template('results.html', urls=urls, error=error)
 
     return render_template('home.html')
+
+
+@bp.route('/db')
+def show_res():
+    db = get_db()
+    reqs = db.execute('SELECT * FROM req').fetchall()
+    print(reqs[1])
+    return render_template('db.html', reqs=reqs)

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Database</h2>
+<table style="width:100%">
+ <tr>
+   <th>URL</th>
+   <th>Result</th>
+ </tr>
+ {% for req in reqs %}
+ <tr>
+   <td>{{req[1]}}</td>
+   <td>{{req[2]}}</td>
+ </tr>
+ {% endfor %}
+</table>
+{% endblock %}
