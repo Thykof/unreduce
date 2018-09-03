@@ -18,7 +18,8 @@ I followed this [tutorial](http://flask.pocoo.org/docs/1.0/tutorial/) to make th
 
 *In development mode.*
 
-    export FLASK_APP=flaskr
+  . venv/bin/activate
+    export FLASK_APP=unreduce
     export FLASK_ENV=development
     flask run
 
