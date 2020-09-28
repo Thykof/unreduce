@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UnReduce</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>UnReduce</h1>
+            <h2>See the final URL of a reduced URL.</h2>
+        </header>
+
+        <section>
+            <form action="/" method="post">
+             <input name="url" type="text" autofocus placeholder="Reduced URL"/>
+             <input value="Run" type="submit"/>
+            </form>
+
+            <p class="error">{{ .Error }}</p>
+
+            <ul>
+                {{range $val := .URLS }}
+                <li>{{ $val }} </li>
+                {{end}}
+            </ul>
+
+        </section>
+        <footer>
+            <p>Webmaster: Thykof</p>
+        </footer>
+    </body>
+</html>
