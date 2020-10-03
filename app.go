@@ -17,8 +17,9 @@ func main() {
 		http.ServeFile(w, r, "./static/style.css")
 	})
 
-	fmt.Println("Now listening on 8080")
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	fmt.Println("Now listening on " + port)
+	http.ListenAndServe(":" + port, nil)
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
